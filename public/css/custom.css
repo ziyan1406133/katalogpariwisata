@@ -1,0 +1,39 @@
+
+/* Bottom right text */
+.text-block {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  left: 1px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white!important;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.img-cropped {
+  object-fit: cover;
+  object-position: center center;
+  width: 500px;
+  height: 250px;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.embed-submit-field {
+  position: relative;
+}
+
+.float-left {
+  float:left;
+  width:310px;
+  padding-left:5px;
+  padding-right:10px;
+}
