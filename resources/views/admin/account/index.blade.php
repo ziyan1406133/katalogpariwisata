@@ -37,25 +37,25 @@
                         @if((auth()->user()->status == 'Super Admin') && ($admin->id != '1'))
                         <a href="/user/{{$admin->id}}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$admin->id}}"><span class="fa fa-trash-alt"></span></a>
                         <div class="modal fade" id="confirm{{$admin->id}}" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Konfirmasi</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p align="left">Apakah anda yakin untuk menghapus akun ini?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            {!!Form::open(['action' => ['UserController@destroy', $admin->id], 'method' => 'POST'])!!}
-                                                {{Form::hidden('_method', 'DELETE')}}
-                                                    <button type="button" class="btn  btn-md" data-dismiss="modal">Batal</button>
-                                                    {{Form::submit('Ya', ['class' => 'btn btn-danger btn-md'])}}
-                                            {!! Form::close() !!}
-                                        </div>
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Konfirmasi</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p align="left">Apakah anda yakin untuk menghapus akun ini?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        {!!Form::open(['action' => ['UserController@destroy', $admin->id], 'method' => 'POST'])!!}
+                                            {{Form::hidden('_method', 'DELETE')}}
+                                                <button type="button" class="btn  btn-md" data-dismiss="modal">Batal</button>
+                                                {{Form::submit('Ya', ['class' => 'btn btn-danger btn-md'])}}
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         @endif
                     </td>
                 </tr>

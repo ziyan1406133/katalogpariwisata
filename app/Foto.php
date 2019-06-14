@@ -11,6 +11,6 @@ class Foto extends Model
     public $timestamps = 'true';
     
     public function lokasi(){
-        return $this->hasOne('App\Lokasi');
+        return $this->belongsTo('App\Lokasi');
     }
 }

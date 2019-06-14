@@ -51,6 +51,7 @@
     <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
     <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
-
+    
+    @yield('script')
 </body>
 </html>

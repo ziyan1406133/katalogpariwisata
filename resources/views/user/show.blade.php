@@ -28,7 +28,7 @@
                             @if($lokasi->deskripsi_detail == null)
                                 <p>Belum ada deskripsi detail.</p>
                             @else
-                                <p>{{$lokasi->deskripsi_detail}}</p>
+                                <p>{!!$lokasi->deskripsi_detail!!}</p>
                             @endif
                         </div>
                     </div>

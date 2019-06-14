@@ -27,7 +27,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="/lokasi">
+        <a class="nav-link" href="/adminlokasi">
         <i class="fas fa-fw fa-map-signs"></i>
         <span>Objek Pariwisata</span></a>
     </li>

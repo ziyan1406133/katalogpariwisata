@@ -11,7 +11,7 @@ class Lokasi extends Model
     public $timestamps = 'true';
     
     public function wilayah(){
-        return $this->hasOne('App\Wilayah');
+        return $this->belongsTo('App\Wilayah');
     }
 
     public function foto(){

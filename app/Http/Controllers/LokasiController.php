@@ -19,6 +19,7 @@ class LokasiController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +27,24 @@ class LokasiController extends Controller
      */
     public function index()
     {
-        $lokasis = Lokasi::orderBy('created_at')->paginate(6);
-        $wilayahs = Wilayah::orderBy('created_at')->get();
+        $lokasis = Lokasi::orderBy('created_at', 'desc')->paginate(6);
+        $wilayahs = Wilayah::orderBy('created_at', 'desc')->get();
 
         return view('user.lokasi', compact('lokasis', 'wilayahs'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminindex()
+    {
+        $lokasis = Lokasi::orderBy('created_at', 'desc')->get();
+        $wilayahs = Wilayah::orderBy('created_at', 'desc')->get();
+        $no=1;
+
+        return view('admin.lokasi.index', compact('lokasis', 'wilayahs', 'no'));
     }
 
     /**
@@ -39,7 +54,9 @@ class LokasiController extends Controller
      */
     public function create()
     {
-        //
+        $wilayahs = Wilayah::orderBy('created_at', 'desc')->get();
+
+        return view('admin.lokasi.create', compact('wilayahs'));
     }
 
     /**
@@ -50,8 +67,34 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+        'foto' => 'image|max:1999',
+        ],
+        [
+            'foto' => 'Cover Foto harus berupa file gambar',
+            'max' => 'Ukuran maksimal Goto adalah 2 MB',
+        ]);
+
+        $lokasi = new Lokasi;;
+        $lokasi->nama = $request->input('nama');
+        $lokasi->wilayah_id = $request->input('wilayah');
+        $lokasi->alamat = $request->input('alamat');
+        $lokasi->longitude = $request->input('longitude');
+        $lokasi->latitude = $request->input('latitude');
+        $lokasi->deskripsi_singkat = $request->input('deskripsi_singkat');
+        if($request->hasFile('foto')){
+            $filenameWithExt = $request->file('foto')->getClientOriginalName();
+            $filename = pathInfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $FileNameToStore1 = $filename.'_'.time().'_.'.$extension;
+            $path = $request->file('foto')->storeAs('public/images/lokasi', $FileNameToStore1);
+            $lokasi->cover = $FileNameToStore1;
+        }
+        $lokasi->deskripsi_detail = $request->input('deskripsi_detail');
+        $lokasi->save();
+
+        return redirect('/adminlokasi')->with('success', 'Lokasi Baru Berhasil Ditambahkan');
+        }
 
     /**
      * Display the specified resource.
@@ -96,7 +139,10 @@ class LokasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $lokasi = Lokasi::findOrFail($id);
+        $wilayahs = Wilayah::orderBy('created_at', 'desc')->get();
+
+        return view('admin.lokasi.edit', compact('wilayahs', 'lokasi'));
     }
 
     /**
@@ -108,7 +154,36 @@ class LokasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+        'foto' => 'image|max:1999',
+        ],
+        [
+            'foto' => 'Cover Foto harus berupa file gambar',
+            'max' => 'Ukuran maksimal Goto adalah 2 MB',
+        ]);
+
+        $lokasi = Lokasi::findOrFail($id);
+        $lokasi->nama = $request->input('nama');
+        $lokasi->wilayah_id = $request->input('wilayah');
+        $lokasi->alamat = $request->input('alamat');
+        $lokasi->longitude = $request->input('longitude');
+        $lokasi->latitude = $request->input('latitude');
+        $lokasi->deskripsi_singkat = $request->input('deskripsi_singkat');
+        if($request->hasFile('foto')){
+            $filenameWithExt = $request->file('foto')->getClientOriginalName();
+            $filename = pathInfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('foto')->getClientOriginalExtension();
+            $FileNameToStore1 = $filename.'_'.time().'_.'.$extension;
+            $path = $request->file('foto')->storeAs('public/images/lokasi', $FileNameToStore1);
+            if($lokasi->cover !== 'no_image.png') {
+                Storage::delete('public/imgaes/lokasi/'.$lokasi->cover);
+                $lokasi->cover = $FileNameToStore1;
+            }
+        }
+        $lokasi->deskripsi_detail = $request->input('deskripsi_detail');
+        $lokasi->save();
+
+        return redirect('/adminlokasi')->with('success', 'Lokasi Berhasil Diperbaharui');
     }
 
     /**
@@ -119,7 +194,16 @@ class LokasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lokasi = Lokasi::findOrFail($id);
+        $fotos = Foto::where('lokasi_id', $id)->get();
+        if(count($fotos) > 0) {
+            foreach ($fotos as $foto) {
+                Storage::delete('public/imgaes/lokasi/'.$foto->gambar);
+                $foto->delete();
+            }
+        }
+        $lokasi->delete();
+        return redirect('/adminlokasi')->with('success', 'Lokasi berhasil dihapus');
     }
 
     /**

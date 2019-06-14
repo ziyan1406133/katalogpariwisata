@@ -62,8 +62,8 @@ class UserController extends Controller
             'password1' => 'required|same:password'
             ],
             [
-                'foto' => 'Foto harus berupa gambar',
-                'max' => 'ukuran maksimal Foto adalahh 2 MB',
+                'foto' => 'Foto harus berupa file gambar',
+                'max' => 'ukuran maksimal Foto adalah 2 MB',
                 'same' => 'Password tidak sesuai'
             ]);
 
@@ -128,8 +128,8 @@ class UserController extends Controller
             'foto' => 'image|max:1999'
             ],
             [
-                'foto' => 'Foto harus berupa gambar',
-                'max' => 'ukuran maksimal Foto adalahh 2 MB'
+                'foto' => 'Foto harus berupa file gambar',
+                'max' => 'ukuran maksimal Foto adalah 2 MB'
             ]);
 
         $admin = User::findOrFail($id);
