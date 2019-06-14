@@ -67,18 +67,19 @@
     </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
   <!-- Contact Form JavaScript -->
-  <script src="js/freelancer/jqBootstrapValidation.js"></script>
-  <script src="js/freelancer/contact_me.js"></script>
+  <script src="{{asset('js/freelancer/jqBootstrapValidation.js')}}"></script>
+  <script src="{{asset('js/freelancer/contact_me.js')}}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/freelancer/freelancer.min.js"></script>
+  <script src="{{asset('js/freelancer/freelancer.min.js')}}"></script>
 
   @yield('js')
 </body>

@@ -11,10 +11,21 @@
 |
 */
 
-//User
+//Admin
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::resource('/user', 'UserController');
+Route::resource('/wilayah', 'WilayahController');
+Route::resource('/foto', 'FotoController');
+//Edit Password
+Route::get('/editpassword/{id}/user', 'UserController@editpassword')->name('edit');
+Route::put('/editpassword/{id}', 'UserController@editpassword1')->name('password');
+
+//Guest
 Route::get('/', 'HomeController@index')->name('home');
-Route::resource('/lokasi', 'LokasiController');
 Route::post('/lokasi/search', 'LokasiController@search')->name('search_lokasi');
+
+//
+Route::resource('/lokasi', 'LokasiController');
 
 //Sebaran Lokasi
 Route::get('/peta', 'MapsController@index')->name('peta');

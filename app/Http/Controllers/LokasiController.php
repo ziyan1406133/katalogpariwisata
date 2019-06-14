@@ -11,6 +11,15 @@ use Map;
 class LokasiController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show', 'search']]);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -132,7 +141,7 @@ class LokasiController extends Controller
                             ->paginate(6);
                             
             $wilayahs = Wilayah::orderBy('created_at')->get();
-            return view('user.searchlokasi', compact('lokasis', 'wilayahs'));
+            return view('user.lokasi', compact('lokasis', 'wilayahs'));
         } else {
             $lokasis = Lokasi::where('wilayah_id', $wilayah_id)
                             ->where(function($q) use ($search) {
@@ -144,7 +153,7 @@ class LokasiController extends Controller
                             ->paginate(6);
 
             $wilayahs = Wilayah::orderBy('created_at')->get();
-            return view('user.search', compact('lokasis', 'wilayahs'));
+            return view('user.lokasi', compact('lokasis', 'wilayahs'));
         }
     }
 }

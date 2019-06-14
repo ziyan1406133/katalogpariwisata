@@ -7,15 +7,16 @@ use App\Lokasi;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
      * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'index']);
     }
-     */
 
     /**
      * Show the application dashboard.
@@ -26,5 +27,15 @@ class HomeController extends Controller
     {
         $lokasis = Lokasi::inRandomOrder()->limit(6)->get();
         return view('user.homepage', compact('lokasis'));
+    }
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }
