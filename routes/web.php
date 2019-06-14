@@ -19,6 +19,7 @@ Route::post('/lokasi/search', 'LokasiController@search')->name('search_lokasi');
 //Sebaran Lokasi
 Route::get('/peta', 'MapsController@index')->name('peta');
 Route::get('/peta/{id}', 'MapsController@wilayah')->name('petawilayah');
+Route::post('/peta/search', 'MapsController@search')->name('search_peta');
 
 //Misc
 Route::get('/register', function() {

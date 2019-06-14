@@ -16,7 +16,7 @@
             </li>
             @guest
                 <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">Login</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Login</a>
                 </li>
             @endguest
             @auth
@@ -24,7 +24,7 @@
                 <div class="dropdown">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" href="#">{{auth()->user()->username}} <i class="fa fa-angle-down"></i></a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/admin">Dashboard</a>
+                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
                         <a class="dropdown-item" href="/user/{{auth()->user()->id}}">Profil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
