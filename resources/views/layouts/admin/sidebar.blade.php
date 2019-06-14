@@ -1,7 +1,7 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-globe"></i>
         </div>
@@ -11,11 +11,10 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
-        <i class="fas fa-fw fa-home"></i>
-        <span>Home</span></a>
+        <a class="nav-link" href="/dashboard">
+        <i class="fas fa-fw fa-chart-pie"></i>
+        <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->

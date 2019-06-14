@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Wilayah;
+use App\Lokasi;
+use App\Foto;
+use Storage;
 
 class WilayahController extends Controller
 {
@@ -105,13 +108,14 @@ class WilayahController extends Controller
         $lokasis = Lokasi::where('wilayah_id', $id)->get();
         if(count($lokasis) > 0) {
             foreach ($lokasis as $lokasi) {
-                $fotos = Foto::where('lokasi_id', $$lokasi->id)->get();
+                $fotos = Foto::where('lokasi_id', $lokasi->id)->get();
                 if(count($fotos) > 0) {
                     foreach ($fotos as $foto) {
-                        Storage::delete('public/imgaes/lokasi/'.$foto->gambar);
+                        Storage::delete('public/images/lokasi/'.$foto->gambar);
                         $foto->delete();
                     }
                 }
+                Storage::delete('public/images/lokasi/'.$lokasi->cover);
                 $lokasi->delete();
             }
         }

@@ -17,6 +17,7 @@ Route::resource('/user', 'UserController');
 Route::resource('/wilayah', 'WilayahController');
 Route::resource('/foto', 'FotoController');
 Route::get('/adminlokasi', 'LokasiController@adminindex')->name('adminindex');
+Route::get('/lokasi/{id}/admin', 'LokasiController@adminshow')->name('adminshow');
 
 //Edit Password
 Route::get('/editpassword/{id}/user', 'UserController@editpassword')->name('edit');

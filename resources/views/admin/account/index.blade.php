@@ -11,6 +11,7 @@
     </div>
     <div class="card">
         <div class="card-body">
+            @include('layouts.messages')
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -35,7 +36,7 @@
                         <a href="/user/{{$admin->id}}" class="btn btn-info btn-sm"><span class="fa fa-eye"></span></a>
                         <a href="/user/{{$admin->id}}/edit" class="btn btn-warning btn-sm"><span class="fa fa-pencil-alt"></span></a>
                         @if((auth()->user()->status == 'Super Admin') && ($admin->id != '1'))
-                        <a href="/user/{{$admin->id}}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$admin->id}}"><span class="fa fa-trash-alt"></span></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$admin->id}}"><span class="fa fa-trash-alt"></span></a>
                         <div class="modal fade" id="confirm{{$admin->id}}" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->

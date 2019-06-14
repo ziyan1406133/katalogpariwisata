@@ -117,7 +117,7 @@ class MapsController extends Controller
     
             Map::initialize($config);
             $map = Map::create_map();
-            return view('user.peta', compact('map', 'wilayahs', 'lokasis'));
+            return view('user.petasearch', compact('map', 'wilayahs', 'lokasis'));
 
         } else {
             $lokasis = Lokasi::where('wilayah_id', $wilayah_id)
@@ -154,7 +154,7 @@ class MapsController extends Controller
     
             Map::initialize($config);
             $map = Map::create_map();
-            return view('user.peta', compact('map', 'wilayahs', 'lokasis'));
+            return view('user.petasearch', compact('map', 'wilayahs', 'lokasis'));
         }
     }
 }

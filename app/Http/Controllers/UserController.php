@@ -94,9 +94,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $admin = User::findOrFail($id);
-
-        return view('admin.account.show', compact('admin'));
+        if((auth()->user()->id == $id) || (auth()->user()->status == 'Super Admin')) {
+            $admin = User::findOrFail($id);
+    
+            return view('admin.account.show', compact('admin'));
+        } else {
+            return redirect('/dashboard')->with('error', 'Anda tidak memiliki hak akses.');
+        }
     }
 
     /**
@@ -144,7 +148,7 @@ class UserController extends Controller
             $FileNameToStore1 = $filename.'_'.time().'_.'.$extension;
             $path = $request->file('foto')->storeAs('public/images/avatar', $FileNameToStore1);
             if($admin->foto !== 'default_avatar.png') {
-                Storage::delete('public/imgaes/avatar/'.$admin->foto);
+                Storage::delete('public/images/avatar/'.$admin->foto);
                 $admin->foto = $FileNameToStore1;
             }
         }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lokasi;
+use App\Wilayah;
+use App\Foto;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -36,6 +39,16 @@ class HomeController extends Controller
      */
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $lokasi = Lokasi::all();
+        $wilayah = Wilayah::all();
+        $foto = Foto::all();
+        $admin = User::all();
+
+        $jml_lokasi = count($lokasi);
+        $jml_wilayah = count($wilayah);
+        $jml_foto = count($foto) + $jml_lokasi;
+        $jml_admin = count($admin);
+
+        return view('admin.dashboard', compact('jml_lokasi', 'jml_wilayah', 'jml_foto', 'jml_admin'));
     }
 }

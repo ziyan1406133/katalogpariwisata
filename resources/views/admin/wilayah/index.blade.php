@@ -6,7 +6,7 @@
             <h1 class="h3 mb-4 text-gray-800">Daftar Wilayah</h1>
         </div>
         <div class="col">
-            <a href="/user/create" class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#tambahwilayah"><span class="fa fa-plus"></span> Tambah Wilayah</a>
+            <a href="#" class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#tambahwilayah"><span class="fa fa-plus"></span> Tambah Wilayah</a>
         </div>
     </div>
     <div class="card">
@@ -27,7 +27,7 @@
                     <td>{{$wilayah->nama}}</td>
                     <td style="text-align:center">
                         <a href="/user/{{$wilayah->id}}" class="btn btn-info btn-sm"><span class="fa fa-eye"></span></a>
-                        <a href="/user/{{$wilayah->id}}/edit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{$wilayah->id}}"> <span class="fa fa-pencil-alt"></span></a>
+                        <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit{{$wilayah->id}}"> <span class="fa fa-pencil-alt"></span></a>
                         <div class="modal fade" id="edit{{$wilayah->id}}" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         @if(auth()->user()->status == 'Super Admin')
-                        <a href="/user/{{$wilayah->id}}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$wilayah->id}}"><span class="fa fa-trash-alt"></span></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$wilayah->id}}"><span class="fa fa-trash-alt"></span></a>
                         <div class="modal fade" id="confirm{{$wilayah->id}}" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->

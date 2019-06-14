@@ -80,7 +80,7 @@
                 </div>
                 <div class="col">
                     {!! Form::file('foto', ['class' => 'form-control']) !!}
-                    <img src="{{asset('/storage/images/lokasi/'.$lokasi->cover)}}" width="10%" alt="">
+                    <a target="_blank" href="/storage/images/lokasi/{{$lokasi->cover}}"><img src="{{asset('/storage/images/lokasi/'.$lokasi->cover)}}" width="10%" alt=""></a>
                 </div>
             </div>
         </div>

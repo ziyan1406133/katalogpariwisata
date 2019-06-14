@@ -10,7 +10,7 @@
         <div class="col">
             <p>
                 <img class="float-left" src="{{asset('/storage/images/lokasi/'.$lokasi->cover)}}">
-                Wilayah : {{$wilayah->nama}} <br>
+                Wilayah : {{$lokasi->wilayah->nama}} <br>
                 Alamat : {{$lokasi->alamat}} <br> <br>
                 {{$lokasi->deskripsi_singkat}}
             </p>
@@ -65,11 +65,6 @@
     </div>
 <br><br><br>
 </div>
-@endsection
-
-@section('js')
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 @endsection
 
 @section('head')

@@ -11,7 +11,27 @@
                 <a href="/user/{{$admin->id}}/edit" class="btn btn-warning btn-sm"><span class="fa fa-pencil-alt"></span> Edit Profil</a>
                 @endif
                 @if((auth()->user()->status == 'Super Admin') && ($admin->id != '1'))
-                <a href="/user/create" class="btn btn-danger btn-sm"><span class="fa fa-trash"></span> Delete Akun</a>
+                <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm"><span class="fa fa-trash-alt"></span> Delete Akun</a>
+                <div class="modal fade" id="confirm" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Konfirmasi</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p align="left">Apakah anda yakin untuk menghapus akun ini?</p>
+                            </div>
+                            <div class="modal-footer">
+                                {!!Form::open(['action' => ['UserController@destroy', $admin->id], 'method' => 'POST'])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="button" class="btn  btn-md" data-dismiss="modal">Batal</button>
+                                        {{Form::submit('Ya', ['class' => 'btn btn-danger btn-md'])}}
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endif
             </div>
         </div>

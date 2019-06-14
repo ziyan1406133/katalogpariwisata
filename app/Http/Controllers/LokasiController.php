@@ -7,6 +7,7 @@ use App\Lokasi;
 use App\Foto;
 use App\Wilayah;
 use Map;
+use Storage;
 
 class LokasiController extends Controller
 {
@@ -105,7 +106,6 @@ class LokasiController extends Controller
     public function show($id)
     {
         $lokasi = Lokasi::findOrFail($id);
-        $wilayah = Wilayah::findOrFail($lokasi->wilayah_id);
         $fotos = Foto::where('lokasi_id', $id)->get();
 
         $config = array();
@@ -127,7 +127,20 @@ class LokasiController extends Controller
         Map::initialize($config);
         $map = Map::create_map();
 
-        return view('user.show', compact('lokasi', 'wilayah', 'fotos', 'map'));
+        return view('user.show', compact('lokasi', 'fotos', 'map'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function adminshow($id)
+    {
+        $lokasi = Lokasi::findOrFail($id);
+
+        return view('admin.lokasi.show', compact('lokasi'));
     }
 
         
@@ -176,14 +189,14 @@ class LokasiController extends Controller
             $FileNameToStore1 = $filename.'_'.time().'_.'.$extension;
             $path = $request->file('foto')->storeAs('public/images/lokasi', $FileNameToStore1);
             if($lokasi->cover !== 'no_image.png') {
-                Storage::delete('public/imgaes/lokasi/'.$lokasi->cover);
+                Storage::delete('public/images/lokasi/'.$lokasi->cover);
                 $lokasi->cover = $FileNameToStore1;
             }
         }
         $lokasi->deskripsi_detail = $request->input('deskripsi_detail');
         $lokasi->save();
 
-        return redirect('/adminlokasi')->with('success', 'Lokasi Berhasil Diperbaharui');
+        return redirect('/lokasi/'.$id.'/admin')->with('success', 'Lokasi Berhasil Diperbaharui');
     }
 
     /**
@@ -198,7 +211,7 @@ class LokasiController extends Controller
         $fotos = Foto::where('lokasi_id', $id)->get();
         if(count($fotos) > 0) {
             foreach ($fotos as $foto) {
-                Storage::delete('public/imgaes/lokasi/'.$foto->gambar);
+                Storage::delete('public/images/lokasi/'.$foto->gambar);
                 $foto->delete();
             }
         }

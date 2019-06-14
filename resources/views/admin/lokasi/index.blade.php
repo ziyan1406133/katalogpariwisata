@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h1 class="h3 mb-4 text-gray-800">Daftar Admin</h1>
+            <h1 class="h3 mb-4 text-gray-800">Daftar Objek Wisata</h1>
         </div>
         <div class="col">
-            <a href="/lokasi/create" class="btn btn-success btn-sm pull-right"><span class="fa fa-plus"></span> Tambah Admin</a>
+            <a href="/lokasi/create" class="btn btn-success btn-sm pull-right"><span class="fa fa-plus"></span> Tambah Lokasi</a>
         </div>
     </div>
     <div class="card">
@@ -33,10 +33,10 @@
                     <td>{{$lokasi->alamat}}</td>
                     <td>{{$lokasi->longitude}}, {{$lokasi->latitude}}</td>
                     <td style="text-align:center">
-                        <a href="/lokasi/{{$lokasi->id}}" class="btn btn-info btn-sm"><span class="fa fa-eye"></span></a>
+                        <a href="/lokasi/{{$lokasi->id}}/admin" class="btn btn-info btn-sm"><span class="fa fa-eye"></span></a>
                         <a href="/lokasi/{{$lokasi->id}}/edit" class="btn btn-warning btn-sm"><span class="fa fa-pencil-alt"></span></a>
                         @if(auth()->user()->status == 'Super Admin')
-                        <a href="/lokasi/{{$lokasi->id}}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$lokasi->id}}"><span class="fa fa-trash-alt"></span></a>
+                        <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{$lokasi->id}}"><span class="fa fa-trash-alt"></span></a>
                         <div class="modal fade" id="confirm{{$lokasi->id}}" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->

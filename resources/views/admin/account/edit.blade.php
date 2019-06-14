@@ -38,7 +38,7 @@
             </div>
         </div>
         @if($admin->id == '1')
-        {!! Form::text('hidden', $admin->status, ['class' => 'form-control', 'hidden' => 'hidden']) !!}
+        {!! Form::text('status', $admin->status, ['class' => 'form-control', 'hidden' => 'hidden']) !!}
         @else
         <div class="form-group">
             <div class="row">
@@ -60,7 +60,9 @@
                     {!! Form::file('foto', ['class' => 'form-control']) !!}
                 </div>
                 <div class="col">
-                    <img src="{{asset('/storage/images/avatar/'.$admin->foto)}}" width="20%">
+                    <a href="/storage/images/avatar/{{$admin->foto}}">
+                        <img src="{{asset('/storage/images/avatar/'.$admin->foto)}}" width="20%">
+                    </a>
                 </div>
             </div>
         </div>

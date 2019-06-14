@@ -67,7 +67,6 @@
     </div>
 
   <!-- Bootstrap core JavaScript -->
-  
   <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
@@ -80,7 +79,5 @@
 
   <!-- Custom scripts for this template -->
   <script src="{{asset('js/freelancer/freelancer.min.js')}}"></script>
-
-  @yield('js')
 </body>
 </html>
