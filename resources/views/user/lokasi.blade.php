@@ -13,18 +13,18 @@
                 {!! Form::open(['action' => 'LokasiController@search', 'method' => 'POST']) !!}
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-5">
-                            <select name="wilayah" id="wilayah" class="form-control">
-                                <option value="0">Wilayah Manapun</option>
-                                @foreach($wilayahs as $wilayah)
-                                    <option value="{{$wilayah->id}}">{{$wilayah->nama}}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <div class="col">
+                            {!! Form::text('search', '', ['class' => 'form-control', 'Placeholder' => 'Cari Objek Wisata']) !!}
+                        </div>
+                        <div class="col-6">
                             <div class="row">
                                 <div class="col">
-                                    {!! Form::text('search', '', ['class' => 'form-control', 'Placeholder' => 'Search...']) !!}
+                                    <select name="wilayah" id="wilayah" class="form-control">
+                                        <option value="0">Seluruh Wilayah</option>
+                                        @foreach($wilayahs as $wilayah)
+                                            <option value="{{$wilayah->id}}">{{$wilayah->nama}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-1">
                                     <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-search"></i></button>

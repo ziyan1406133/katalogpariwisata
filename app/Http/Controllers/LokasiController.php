@@ -144,7 +144,7 @@ class LokasiController extends Controller
                             ->paginate(6);
 
             $wilayahs = Wilayah::orderBy('created_at')->get();
-            return view('user.searchlokasi', compact('lokasis', 'wilayahs'));
+            return view('user.search', compact('lokasis', 'wilayahs'));
         }
     }
 }
