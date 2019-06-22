@@ -10,11 +10,11 @@
                 @if((auth()->user()->id == $admin->id) || (auth()->user()->status == 'Super Admin'))
                 <a href="/user/{{$admin->id}}/edit" class="btn btn-warning btn-sm"><span class="fa fa-pencil-alt"></span> Edit Profil</a>
                 @endif
+                <!--
                 @if((auth()->user()->status == 'Super Admin') && ($admin->id != '1'))
                 <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm"><span class="fa fa-trash-alt"></span> Delete Akun</a>
                 <div class="modal fade" id="confirm" role="dialog">
                     <div class="modal-dialog">
-                        <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Konfirmasi</h4>
@@ -33,6 +33,7 @@
                     </div>
                 </div>
                 @endif
+                -->
             </div>
         </div>
     </div>
@@ -58,12 +59,14 @@
                             <td>E-Mail</td>
                             <td>: {{$admin->email}}</td>
                         </tr>
+                        <!--
                         @if(auth()->user()->status == 'Super Admin')
                         <tr>
                             <td>Status</td>
                             <td>: {{$admin->status}}</td>
                         </tr>
                         @endif
+                        -->
                     </table>
                     @if(auth()->user()->id == $admin->id)
                     <a href="/editpassword/{{$admin->id}}/user" class="btn btn-gray btn-sm pull-right"><span class="fa fa-lock"></span> Ubah Password</a>

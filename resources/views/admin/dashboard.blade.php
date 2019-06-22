@@ -51,7 +51,7 @@
             </div>
             </div>
         </div>
-
+        <!--
         <div class="col">
             <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
@@ -67,6 +67,7 @@
             </div>
             </div>
         </div>
+        -->
     </div>
     <hr>
     <div class="row">
@@ -82,9 +83,11 @@
                         <li>Menambah, mengedit, dan menghapus objek wisata di Menu Objek Wisata.</li>
                         <li>Menambah,  dan menghapus foto-foto objek wisata ketika anda membuka suatu objek wisata dari Menu Objek Wisata.</li>
                         <li>Mengedit dan mengubah password akun milik diri sendiri.</li>
+                        <!--
                         @if(auth()->user()->status == "Super Admin")
                             <li>Menambah, mengedit, dan menghapus akun admin di Menu Kelola Admin</li>
                         @endif
+                        -->
                     </ul>
                     
                 </div>

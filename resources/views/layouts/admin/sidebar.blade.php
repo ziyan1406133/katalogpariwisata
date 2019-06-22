@@ -1,4 +1,4 @@
-<!-- Sidebar -->
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -36,11 +36,11 @@
         <span>Wilayah</span></a>
     </li>
 
+    <!--
     @if(auth()->user()->status == 'Super Admin')
-    <!-- Divider -->
+
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
     <div class="sidebar-heading">
         Menu Super Admin
     </div>
@@ -51,5 +51,5 @@
         <span>Kelola Admin</span></a>
     </li>
     @endif
+    -->
 </ul>
-<!-- End of Sidebar -->

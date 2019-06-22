@@ -26,6 +26,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        /*
         if(auth()->user()->status == 'Super Admin') {
             $admins = User::orderBy('status', 'desc')->get();
 
@@ -33,6 +34,8 @@ class UserController extends Controller
         } else {
             return redirect('/dashboard')->with('error', 'Anda tidak memiliki hak akses.');
         }
+        */
+        return redirect('/dashboard');
     }
 
     /**
@@ -42,11 +45,14 @@ class UserController extends Controller
      */
     public function create()
     {
+        /*
         if(auth()->user()->status == 'Super Admin') {
             return view('admin.account.create');
         } else {
             return redirect('/dashboard')->with('error', 'Anda tidak memiliki hak akses.');
         }
+        */
+        return redirect('/dashboard');
     }
 
     /**
@@ -165,12 +171,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        /*
         $admin = User::findOrFail($id);
         if($admin->foto !== 'devault_avatar.png') {
             Storage::delete('public/avatar/'.$admin->foto);
         }
         $admin->delete();
         return redirect('/user')->with('success', 'Akun Admin Berhasil Dihapus');
+        */
+        return redirect('/dashboard');
     }
 
     public function editpassword($id) {

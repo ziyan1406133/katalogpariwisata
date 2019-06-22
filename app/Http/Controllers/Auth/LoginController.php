@@ -43,4 +43,8 @@ class LoginController extends Controller
         return view('auth.login', compact('foto'));
     }
 
+    public function username() {
+        return 'username';
+    }
+
 }
